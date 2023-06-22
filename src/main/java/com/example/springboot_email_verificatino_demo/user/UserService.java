@@ -9,7 +9,7 @@ public interface UserService {
 
     List<User> getUsers();
 
-    User registerUser(RegistrationRequest request);
+    User registerUser(RegistrationRequest request) throws UserNameAlreadyExistsException;
 
     Optional<User> findByEmail(String Email);
 }
