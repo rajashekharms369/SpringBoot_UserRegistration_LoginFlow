@@ -22,7 +22,7 @@ public class RegistrationController {
     public String registerUser(RegistrationRequest registrationRequest) throws UserNameAlreadyExistsException {
         User user = userService.registerUser(registrationRequest);
 //        publish registration event
-        return "Success, Please Check you email to complete the registration";
+        return "Success, Please Check you email to complete the registration and then login";
     }
 
 
