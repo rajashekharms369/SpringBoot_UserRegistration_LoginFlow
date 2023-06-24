@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.context.ApplicationEvent;
 
-import java.time.Clock;
-
 @Getter
 @Setter
 public class RegistrationCompleteEvent extends ApplicationEvent {
@@ -14,7 +12,7 @@ public class RegistrationCompleteEvent extends ApplicationEvent {
 
     private String applicationUrl;
 
-    public RegistrationCompleteEvent(Object source, User user, String applicationUrl) {
+    public RegistrationCompleteEvent(Object source, String applicationUrl) {
         super(source);
         this.user = user;
         this.applicationUrl = applicationUrl;
