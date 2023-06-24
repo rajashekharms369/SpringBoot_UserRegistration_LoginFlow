@@ -12,4 +12,6 @@ public interface UserService {
     User registerUser(RegistrationRequest request) throws UserNameAlreadyExistsException;
 
     Optional<User> findByEmail(String Email);
+
+    void saveUserVerificationToken(User theUser, String verificationToken);
 }

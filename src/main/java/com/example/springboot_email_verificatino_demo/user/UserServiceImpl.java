@@ -42,4 +42,10 @@ public class UserServiceImpl implements UserService{
     public Optional<User> findByEmail(String Email) {
         return userRepostory.findByEmail(Email);
     }
+
+    @Override
+    public void saveUserVerificationToken(User theUser, String verificationToken) {
+        var verificationToken = new VerificationToken(token, theUser);
+        
+    }
 }
