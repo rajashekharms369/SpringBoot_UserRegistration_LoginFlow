@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Entity
-public class VerficationToken {
+public class VerificationToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,7 +27,7 @@ public class VerficationToken {
     @OneToOne
     private User user;
 
-    public VerficationToken(String token, User user) {
+    public VerificationToken(String token, User user) {
         this.token = token;
         this.user = user;
         this.expirationTime = this.getTokenExpirationTime();

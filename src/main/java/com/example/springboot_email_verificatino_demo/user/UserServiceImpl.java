@@ -1,23 +1,28 @@
 package com.example.springboot_email_verificatino_demo.user;
 
 import com.example.springboot_email_verificatino_demo.registration.RegistrationRequest;
+import com.example.springboot_email_verificatino_demo.registration.VerificationToken;
+import com.example.springboot_email_verificatino_demo.registration.VerificationTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
-    private UserRepository userRepostory;
+    private final VerificationTokenRepository verificationTokenRepository;
+    @Autowired
+    private final UserRepository userRepostory;
     @Override
     public List<User> getUsers() {
         return userRepostory.findAll();
@@ -44,7 +49,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void saveUserVerificationToken(User theUser, String verificationToken) {
-        var verificationToken = new VerificationToken(token, theUser);
+    public void saveUserVerificationToken(User theUser, String token) {
+        VerificationToken verificationToken = new VerificationToken(token, theUser);
+        verificationTokenRepository.save(verificationToken);
     }
 }
